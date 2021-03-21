@@ -3,68 +3,40 @@ import React, { useState } from 'react';
 import { StrictMode } from "react";
 import ReactDOM from "react-dom";
 
-
+//Parse the User input
 function SelectRoute({inputCountry}){
-  
   switch(inputCountry){
-    case 'USA': 
-      return <ul><USA /></ul>;
-    case 'CAN':
-      return <ul><CAN /></ul>;
-    case 'MEX': 
-      return <ul><MEX /></ul>;
-    case 'BLZ': 
-      return <ul><BLZ /></ul>;
-    case 'GTM': 
-      return <ul><GTM /></ul>;
-    case 'SLV': 
-      return <ul><SLV /></ul>;
-    case 'HND': 
-      return <ul><HND /></ul>;
-    case 'NIC': 
-      return <ul><NIC /></ul>;
-    case 'CRI': 
-      return <ul><CRI /></ul>;
-    case 'PAN': 
-      return <ul><PAN /></ul>;
-    default:
-      return <div></div>;
+    case 'USA': return <ul><USA /></ul>;
+    case 'CAN': return <ul><CAN /></ul>;
+    case 'MEX': return <ul><MEX /></ul>;
+    case 'BLZ': return <ul><BLZ /></ul>;
+    case 'GTM': return <ul><GTM /></ul>;
+    case 'SLV': return <ul><SLV /></ul>;
+    case 'HND': return <ul><HND /></ul>;
+    case 'NIC': return <ul><NIC /></ul>;
+    case 'CRI': return <ul><CRI /></ul>;
+    case 'PAN': return <ul><PAN /></ul>;
+    default: return <div></div>;
   }
 }
-function USA(){
-  return <li>USA</li>;
-}
-function CAN(){
-  return <div><USA /><li>CAN</li></div>;
-}
-function MEX(){
-  return <div><USA /><li>MEX</li></div>;
-}
-function BLZ(){
-  return <div><MEX /><li>BLZ</li></div>;
-}
-function GTM(){
-  return <div><MEX /><li>GTM</li></div>;
-}
-function SLV(){
-  return <div><GTM /><li>SLV</li></div>;
-}
-function HND(){
-  return <div><GTM /><li>HND</li></div>;
-}
-function NIC(){
-  return <div><HND /><li>NIC</li></div>;
-}
-function CRI(){
-  return <div><NIC /><li>CRI</li></div>;
-}
-function PAN(){
-  return <div><CRI /><li>PAN</li></div>;
-}
+
+//Each country has a function, which returns the bulleted 
+//list of previous countries plus a bullet for itself
+function USA(){ return <li>USA</li>; }
+function CAN(){ return <><USA /><li>CAN</li></>; }
+function MEX(){ return <><USA /><li>MEX</li></>; }
+function BLZ(){ return <><MEX /><li>BLZ</li></>; }
+function GTM(){ return <><MEX /><li>GTM</li></>; }
+function SLV(){ return <><GTM /><li>SLV</li></>; }
+function HND(){ return <><GTM /><li>HND</li></>; }
+function NIC(){ return <><HND /><li>NIC</li></>; }
+function CRI(){ return <><NIC /><li>CRI</li></>; }
+function PAN(){ return <><CRI /><li>PAN</li></>; }
 
 
+//Builds the page the user sees
+//Includes the user input and output list
 function App() {
-
   const [inputCountry, setInputCountry] = useState([]);
 
   return (
@@ -77,7 +49,7 @@ function App() {
   );
 }
 
-
+//Displays the App
 const rootElement = document.getElementById("root");
 ReactDOM.render(
   <StrictMode>
